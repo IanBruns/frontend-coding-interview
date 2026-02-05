@@ -6,6 +6,9 @@ import {
 
 import ImagesPage from "./page"
 
+// mock api result
+/* {"page":1,"per_page":1,"photos":[{"id":20727530,"width":4000,"height":6000,"url":"https://www.pexels.com/photo/a-pink-scooter-parked-near-a-pier-with-a-view-of-the-water-20727530/","photographer":"Alex Ravvas","photographer_url":"https://www.pexels.com/@alexravvas","photographer_id":30355703,"avg_color":"#6F859D","src":{"original":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg","large2x":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=2\u0026h=650\u0026w=940","large":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026h=650\u0026w=940","medium":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026h=350","small":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026h=130","portrait":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026fit=crop\u0026h=1200\u0026w=800","landscape":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026fit=crop\u0026h=627\u0026w=1200","tiny":"https://images.pexels.com/photos/20727530/pexels-photo-20727530.jpeg?auto=compress\u0026cs=tinysrgb\u0026dpr=1\u0026fit=crop\u0026h=200\u0026w=280"},"liked":false,"alt":"A colorful scooter parked by a scenic seaside promenade under a clear blue sky."}],"total_results":8000,"next_page":"https://api.pexels.com/v1/search?page=2\u0026per_page=1\u0026query=nature"} */
+
 type CustomRendererType = () => RenderResult
 
 describe("CoursesRoute", () => {
@@ -16,8 +19,24 @@ describe("CoursesRoute", () => {
     render = () => rtlRender(tsx)
   })
 
-  it("renders", () => {
+  it("renders", async () => {
     render()
-    expect(screen.getByText("Images Page!")).toBeInTheDocument()
+    expect(screen.getByText("All Photos")).toBeInTheDocument()
+    expect(await screen.findByText("Alex Ravvas")).toBeInTheDocument()
+    expect(
+      screen.getByAltText(
+        "A colorful scooter parked by a scenic seaside promenade under a clear blue sky.",
+      ),
+    ).toBeInTheDocument()
+    expect(screen.getByText("#6F859D")).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        '"A colorful scooter parked by a scenic seaside promenade under a clear blue sky."',
+      ),
+    ).toBeInTheDocument()
+    expect(screen.getByText("Portfolio")).toHaveProperty(
+      "href",
+      "https://www.pexels.com/@alexravvas",
+    )
   })
 })
