@@ -24,8 +24,8 @@ describe("CoursesRoute", () => {
   let render: CustomRendererType
 
   beforeEach(async () => {
-    const jsx = await AuthPage()
-    render = () => rtlRender(jsx)
+    const tsx = await AuthPage()
+    render = () => rtlRender(tsx)
   })
 
   it("renders", () => {
