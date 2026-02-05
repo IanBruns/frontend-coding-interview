@@ -3,8 +3,11 @@ import {
   render as rtlRender,
   screen,
 } from "@testing-library/react"
+import { useRouter } from "next/navigation"
 
 import ImagesPage from "./page"
+
+type CustomRendererType = () => RenderResult
 
 jest.mock("./api", () => ({
   getImages: jest.fn(() => ({
@@ -47,17 +50,29 @@ jest.mock("./api", () => ({
   })),
 }))
 
-type CustomRendererType = () => RenderResult
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}))
+
+const mockGetItem = jest.fn()
+
+Object.defineProperty(window, "sessionStorage", {
+  value: {
+    getItem: mockGetItem,
+  },
+})
 
 describe("CoursesRoute", () => {
   let render: CustomRendererType
 
   beforeEach(async () => {
+    jest.clearAllMocks()
     const tsx = await ImagesPage()
     render = () => rtlRender(tsx)
   })
 
   it("renders", async () => {
+    mockGetItem.mockReturnValueOnce("foo")
     render()
     expect(screen.getByText("All Photos")).toBeInTheDocument()
     expect(await screen.findByText("Alex Ravvas")).toBeInTheDocument()
@@ -76,5 +91,15 @@ describe("CoursesRoute", () => {
       "href",
       "https://www.pexels.com/@alexravvas",
     )
+  })
+
+  it("redirects users to /auth if nothing in session storage", () => {
+    const push = jest.fn()
+    ;(useRouter as jest.Mock).mockImplementation(() => ({
+      push,
+    }))
+    mockGetItem.mockReturnValueOnce(null)
+    render()
+    expect(useRouter().push).toHaveBeenCalledWith("/auth")
   })
 })

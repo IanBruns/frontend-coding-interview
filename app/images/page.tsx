@@ -2,6 +2,7 @@ import Image from "next/image"
 
 import { getImages } from "./api"
 import Link from "next/link"
+import AuthCheck from "./AuthCheck"
 
 type Photo = {
   alt: string
@@ -20,6 +21,7 @@ export default async function ImagesPage() {
 
   return (
     <div>
+      <AuthCheck />
       <h1>All Photos</h1>
       {imageData?.photos.map((photo: Photo) => (
         <div key={photo.id}>
