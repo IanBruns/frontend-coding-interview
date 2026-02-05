@@ -1,11 +1,14 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 
 export default function AuthCheck() {
   const router = useRouter()
 
-  if (!window.sessionStorage.getItem("userId")) {
-    router.push("/auth")
-  }
+  useEffect(() => {
+    if (!window.sessionStorage.getItem("userId")) {
+      router.push("/auth")
+    }
+  })
   return <></>
 }
