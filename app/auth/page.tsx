@@ -1,7 +1,12 @@
-export default function AuthPage() {
+"use server"
+
+import LoginForm from "./LoginForm"
+
+export default async function AuthPage() {
   return (
     <div>
-      <p>Auth Page!</p>
+      <h1>Sign in to your account</h1>
+      <LoginForm />
     </div>
   )
 }
