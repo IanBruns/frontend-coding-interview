@@ -48,7 +48,7 @@ export default function LoginForm() {
         </div>
         <input
           className="border border-[#9CA3AF] rounded-lg w-[319px] h-11"
-          type="text"
+          type="password"
           id="password"
           value={password}
           onChange={e => {
