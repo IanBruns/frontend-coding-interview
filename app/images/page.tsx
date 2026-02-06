@@ -21,7 +21,7 @@ export default async function ImagesPage() {
   const imageData = await getImages()
 
   return (
-    <div className="p-4 overflow-auto lg:flex lg:items-center lg:flex-col">
+    <div className="p-4 overflow-auto flex items-center flex-col">
       <AuthCheck />
       <Image
         className="mb-3"
@@ -32,9 +32,9 @@ export default async function ImagesPage() {
       />
       <h1 className="font-bold text-xl font-sans mb-3">All Photos</h1>
       {imageData?.photos.map((photo: Photo) => (
-        <div key={photo.id} className="flex flex-row mb-2 h-full items-center">
+        <div key={photo.id} className="flex flex-row mb-2 h-full">
           <FaStar color={photo.liked ? "#FFD600" : "#9CA3AF"} />
-          <div className="flex flex-row h-full">
+          <div className="flex flex-row h-full items-center">
             <Image
               className="w-[75px] h-[75px] aspect-square rounded-lg mr-3"
               width={75}
@@ -59,12 +59,12 @@ export default async function ImagesPage() {
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <Image src="/links.svg" alt="CI Logo" width={12} height={12} />
+          <div className="lg:ml-10">
             <Link
-              className="font-normal text-sm text-[#0075EB] hover:underline hover:cursor-pointer"
+              className="font-normal text-sm text-[#0075EB] hover:underline hover:cursor-pointer flex items-center"
               href={photo.photographer_url}
             >
+              <Image src="/links.svg" alt="CI Logo" width={12} height={12} />
               Portfolio
             </Link>
           </div>
