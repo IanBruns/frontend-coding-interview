@@ -7,7 +7,7 @@ export default function AuthCheck() {
 
   useEffect(() => {
     if (!window.sessionStorage.getItem("userId")) {
-      router.push("/auth")
+      router.push("/")
     }
   })
   return <></>
