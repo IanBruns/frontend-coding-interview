@@ -15,32 +15,49 @@ export default function LoginForm() {
 
   return (
     <>
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        id="username"
-        value={username}
-        onChange={e => {
-          setUsername(e.target.value)
-        }}
-      />
-      <label htmlFor="password">Password</label>
+      <div className="flex items-left flex-col w-[319px] mb-3">
+        <label className="font-bold text-sm text-[#111827]" htmlFor="username">
+          Username
+        </label>
+        <input
+          className="border border-[#9CA3AF] rounded-lg h-11"
+          type="text"
+          id="username"
+          value={username}
+          onChange={e => {
+            setUsername(e.target.value)
+          }}
+        />
+      </div>
+      <div className="w-[319px] mb-3">
+        <div className="flex justify-between">
+          <label
+            className="font-bold text-sm text-[#111827]"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <button
+            className="font-normal text-sm text-[#0075EB] hover:underline cursor-pointer"
+            onClick={() => {
+              console.log("reset password feature incoming")
+            }}
+          >
+            Forgot password?
+          </button>
+        </div>
+        <input
+          className="border border-[#9CA3AF] rounded-lg w-[319px] h-11"
+          type="text"
+          id="password"
+          value={password}
+          onChange={e => {
+            setPassword(e.target.value)
+          }}
+        />
+      </div>
       <button
-        onClick={() => {
-          console.log("reset password feature incoming")
-        }}
-      >
-        Forgot password?
-      </button>
-      <input
-        type="text"
-        id="password"
-        value={password}
-        onChange={e => {
-          setPassword(e.target.value)
-        }}
-      />
-      <button
+        className="w-[319px] h-11 bg-[#0075EB] rounded-lg cursor-pointer font-bold text-base text-white disabled:cursor-not-allowed"
         disabled={!username.length || !password.length}
         onClick={handleSignIn}
       >
