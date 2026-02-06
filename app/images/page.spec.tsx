@@ -3,6 +3,7 @@ import {
   render as rtlRender,
   screen,
 } from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
 import { useRouter } from "next/navigation"
 
 import ImagesPage from "./page"
@@ -101,5 +102,16 @@ describe("CoursesRoute", () => {
     mockGetItem.mockReturnValueOnce(null)
     render()
     expect(useRouter().push).toHaveBeenCalledWith("/auth")
+  })
+
+  it("allows the user to like an image", async () => {
+    mockGetItem.mockReturnValueOnce("foo")
+    render()
+    expect(screen.getByText("All Photos")).toBeInTheDocument()
+    expect(screen.getByTestId("star-20727530")).toHaveStyle("color: #9CA3AF")
+    await userEvent.click(screen.getByTestId("star-20727530"))
+    expect(await screen.findByTestId("star-20727530")).toHaveStyle(
+      "color: #FFD600",
+    )
   })
 })
