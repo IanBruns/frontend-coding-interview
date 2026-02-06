@@ -101,7 +101,7 @@ describe("CoursesRoute", () => {
     }))
     mockGetItem.mockReturnValueOnce(null)
     render()
-    expect(useRouter().push).toHaveBeenCalledWith("/auth")
+    expect(useRouter().push).toHaveBeenCalledWith("/")
   })
 
   it("allows the user to like an image", async () => {
