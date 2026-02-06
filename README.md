@@ -46,7 +46,7 @@ Remember, please don't spend too much time on this. In fact, save a little time 
 
 ## Ian's notes
 
-Hello! My name is Ian Bruns and I'm applying for the Senior front end position, and I wanted to detail a bit of my thought process and what I'd do next to get something like this ready for enterprice:
+Hello! My name is Ian Bruns and I'm applying for the Senior front-end position, and I wanted to detail a bit of my thought process and what I'd do next to get something like this ready for enterprice:
 
 ### How to run
 
@@ -58,14 +58,14 @@ In the first few git commits I wanted to outline how I tackle a TDD approach. Wr
 
 I do css last as I don't like frosting a cake until it's baked personally. I like being able to get thing to pair first and then add the beauty to the designs
 
-When it came to React methodologies, I noticed that the React concepts called out wwere useContext and useCallback spefically, and so I thought about planning around those (almost did the authentication in a context) but ultimately thought that for a lighter weight app the tried and true useState and useEffect methods did most of the work for us (along with some of nextjs' own hooks)
+When it came to React methodologies, I noticed that the React concepts called out were useContext and useCallback specifically, and so I thought about planning around those (almost did the authentication in a context) but ultimately thought that for a lighter weight app the tried and true useState and useEffect methods did most of the work for us (along with some of nextjs' own hooks)
 
 ### Next steps
 
 I think I only did one thing outside of the parameters of the figma and it was adding a disabled state to the login page as checking that the userid made it into session storage was my check for ability to access the Images, but my next steps on authentication would be to get the "forgot password" link doing more than console logging
 
-For the Images page, the trio of Pagination/Sort/Filter are always good adds, but the first feature for me would be doing something with the Star ratings to update if the images were liked or not. Also I would probably have the portfoilo's open in a new tab as well
+For the Images page, the trio of Pagination/Sort/Filter are always good adds, but the first feature for me would be doing something with the Star ratings to update if the images were liked or not, also I would probably have the portfolio’s open in a new tab as well
 
 The Image alt texts could also use an update as some of them were longer than what was on the figma. I would have a cutoff point and then an overflow tooltip that shows the alt text if it goes above a certain character limit
 
-I could also add a modal to show a larger form of the Image, and for ADA complaince I would work with a designer on the dominant color section to make sure that we can always the contrast up to standards
+I could also add a modal to show a larger form of the Image, and for ADA compliance I would work with a designer on the dominant color section to make sure that we can always the contrast up to standards
